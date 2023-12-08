@@ -1,0 +1,1 @@
+docker exec -u $UID $PROJECTID-watch node $1

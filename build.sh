@@ -1,0 +1,1 @@
+docker-compose -f prod-build.yml run --remove-orphans -u $UID node-build

@@ -1,0 +1,31 @@
+version: '3'
+services:
+    node-watch:
+        volumes:
+            - ./node:/opt/project/app:rw
+            - ./services/watch/webpack.config.js:/opt/project/webpack.config.js:rw
+        build:
+            context: .
+            dockerfile: services/watch/Dockerfile
+        container_name: $PROJECTID-watch
+        user: "${UID}:${GID}"
+    apache-dev:
+        volumes:
+            - ./node/dev:/var/www/html/js:rw
+            - ./html:/var/www/html:rw
+        build:
+            context: .
+            dockerfile: services/apache/Dockerfile
+        ports:
+            - "8080:80"
+        container_name: $PROJECTID-dev
+    apache-prod:
+        volumes:
+            - ./node/prod:/var/www/html/js:rw
+            - ./html:/var/www/html:rw
+        build:
+            context: .
+            dockerfile: services/apache/Dockerfile
+        ports:
+            - "8081:80"
+        container_name: $PROJECTID-prod
