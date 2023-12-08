@@ -1,6 +1,6 @@
 Requirements: Docker
 
-Do a global find-replace for $PROJECTID to some unique ID of your choice.
+Do a global find-replace for $PROJECTID to some unique ID of your choice, then `rm -rf .git` and `git init` to start a new repository.
 
 Windows requires WSL or some sort of Unix shell
 
