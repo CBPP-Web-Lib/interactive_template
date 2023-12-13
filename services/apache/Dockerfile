@@ -24,4 +24,10 @@ RUN curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
 RUN php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
 COPY php_mem.ini "$PHP_INI_DIR/conf.d/php_mem.ini"
 
+RUN echo "Header set Access-Control-Allow-Origin *" >> /etc/apache2/apache2.conf
+RUN echo "Header unset ETag" >> /etc/apache2/apache2.conf
+RUN echo 'Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"' >> /etc/apache2/apache2.conf
+RUN echo 'Header set Pragma "no-cache"' >> /etc/apache2/apache2.conf
+RUN echo 'Header set Expires "Wed, 11 Jan 1984 05:00:00 GMT"' >> /etc/apache2/apache2.conf
+
 EXPOSE 9000
