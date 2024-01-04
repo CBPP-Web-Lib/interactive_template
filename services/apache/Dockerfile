@@ -15,14 +15,13 @@ ENV APACHE_DOCUMENT_ROOT=/var/www/html
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf && \
   sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
 
-RUN pecl install xdebug
+RUN pecl install xdebug && docker-php-ext-enable xdebug
 
 RUN a2enmod headers
 
 #RUN apt-get install -y php7.3-cli curl
 RUN curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
 RUN php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
-COPY php_mem.ini "$PHP_INI_DIR/conf.d/php_mem.ini"
 
 RUN echo "Header set Access-Control-Allow-Origin *" >> /etc/apache2/apache2.conf
 RUN echo "Header unset ETag" >> /etc/apache2/apache2.conf

@@ -4,6 +4,7 @@ services:
         volumes:
             - ./node/dev:/var/www/html/js:rw
             - ./html:/var/www/html:rw
+            - ./php.ini:/usr/local/etc/php/conf.d/php.ini:rw
         build:
             context: .
             dockerfile: services/apache/Dockerfile
@@ -14,6 +15,7 @@ services:
         volumes:
             - ./node/prod:/var/www/html/js:rw
             - ./html:/var/www/html:rw
+            - ./php.ini:/usr/local/etc/php/conf.d/php.ini:rw
         build:
             context: .
             dockerfile: services/apache/Dockerfile
