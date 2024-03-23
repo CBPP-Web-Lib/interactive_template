@@ -1,6 +1,11 @@
-GID=$(id -g)
+GROUP_ID=$(id -g)
+USER_ID=$(id -u)
 cp -r .env_custom .env
 echo "" >> .env
-echo UID=${UID} >> .env
-echo GID=${GID} >> .env
-docker-compose run -u ${UID} --workdir "/opt/project/app" --entrypoint  "npm install" node-watch
+if [[ $(uname) == "Darwin" ]]; then
+    GROUP_ID=0
+    USER_ID=0
+fi
+echo UID=${USER_ID} >> .env
+echo GID=${GROUP_ID} >> .env
+docker-compose run -u ${USER_ID} --workdir "/opt/project/app" --entrypoint  "npm install" node-watch
