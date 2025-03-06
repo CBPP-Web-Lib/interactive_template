@@ -8,4 +8,7 @@ if [[ $(uname) == "Darwin" ]]; then
 fi
 echo UID=${USER_ID} >> .env
 echo GID=${GROUP_ID} >> .env
+if [ -f ./../local_install.sh ]; then
+    ./../local_install.sh;
+fi
 docker-compose run -u ${USER_ID} --workdir "/opt/project/app" --entrypoint  "npm install" node-watch
