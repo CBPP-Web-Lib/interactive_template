@@ -9,10 +9,10 @@ module.exports = {
     filename: 'app.js'
   },
   resolve: {
-    modules: [__dirname, 'node_modules'],
+    modules: [__dirname, 'app/node_modules'],
   },
   resolveLoader: {
-    modules: [__dirname, 'node_modules'],
+    modules: [__dirname, 'app/node_modules'],
   },
   target: ['web', 'es5'],
   module: {
@@ -38,7 +38,7 @@ module.exports = {
               /app\/node_modules[\\\/]webpack[\\\/]buildin/,
             ],
             "presets": [
-              [path.resolve(__dirname, 'node_modules/@babel/preset-env'),  {"targets": "ie 11"}]
+              [path.resolve(__dirname, 'app/node_modules/@babel/preset-env'),  {"targets": "ie 11"}]
             ]
           }
         }

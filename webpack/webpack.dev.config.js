@@ -11,10 +11,10 @@ module.exports = {
   },
   devtool: 'inline-source-map',
   resolve: {
-    modules: [__dirname, 'node_modules'],
+    modules: [__dirname, 'app/node_modules'],
   },
   resolveLoader: {
-    modules: [__dirname, 'node_modules'],
+    modules: [__dirname, 'app/node_modules'],
   },
   module: {
     rules: [
