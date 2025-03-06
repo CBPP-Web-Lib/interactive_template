@@ -2,7 +2,7 @@ var path = require('path');
 
 module.exports = {
   mode: 'development',
-  entry: './app/src/app.js',
+  entry: './src/app.js',
   watch: true,
   cache: false,
   output: {
@@ -11,10 +11,10 @@ module.exports = {
   },
   devtool: 'inline-source-map',
   resolve: {
-    modules: [__dirname, 'app/node_modules'],
+    modules: [__dirname, 'node_modules'],
   },
   resolveLoader: {
-    modules: [__dirname, 'app/node_modules'],
+    modules: [__dirname, 'node_modules'],
   },
   module: {
     rules: [

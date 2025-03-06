@@ -25,7 +25,7 @@ services:
     node-build:
         volumes:
             - ./node:/opt/project/app:rw
-            - ./services/build/webpack.config.js:/opt/project/webpack.config.js:rw
+            - ./webpack/webpack.prod.config.js:/opt/project/webpack.config.js:rw
         build:
             context: .
             dockerfile: services/watch/Dockerfile
@@ -33,7 +33,7 @@ services:
     node-watch:
         volumes:
             - ./node:/opt/project/app:rw
-            - ./services/watch/webpack.config.js:/opt/project/webpack.config.js:rw
+            - ./webpack/webpack.dev.config.js:/opt/project/webpack.config.js:rw
         build:
             context: .
             dockerfile: services/watch/Dockerfile

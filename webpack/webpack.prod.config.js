@@ -2,17 +2,17 @@ var path = require('path');
 
 module.exports = {
   mode: 'production',
-  entry: './app/src/app.js',
+  entry: './src/app.js',
   watch: true,
   output: {
     path: path.resolve(__dirname, 'app/prod'),
     filename: 'app.js'
   },
   resolve: {
-    modules: [__dirname, 'app/node_modules'],
+    modules: [__dirname, 'node_modules'],
   },
   resolveLoader: {
-    modules: [__dirname, 'app/node_modules'],
+    modules: [__dirname, 'node_modules'],
   },
   target: ['web', 'es5'],
   module: {
@@ -38,7 +38,7 @@ module.exports = {
               /app\/node_modules[\\\/]webpack[\\\/]buildin/,
             ],
             "presets": [
-              [path.resolve(__dirname, 'app/node_modules/@babel/preset-env'),  {"targets": "ie 11"}]
+              [path.resolve(__dirname, 'node_modules/@babel/preset-env'),  {"targets": "ie 11"}]
             ]
           }
         }
