@@ -6,3 +6,4 @@ package-lock.json
 html/vendor
 html/composer.lock
 .env
+php.local.ini

@@ -8,4 +8,5 @@ if [[ $(uname) == "Darwin" ]]; then
 fi
 echo UID=${USER_ID} >> .env
 echo GID=${GROUP_ID} >> .env
+cp php.local.ini.example php.local.ini
 docker-compose run -u ${USER_ID} --workdir "/opt/project/app" --entrypoint  "npm install" node-watch --rm
