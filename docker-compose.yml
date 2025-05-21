@@ -39,3 +39,5 @@ services:
             dockerfile: services/watch/Dockerfile
         container_name: $PROJECTID-watch
         user: ${UID}:${GID}
+        ports:
+            - "9229:9229"

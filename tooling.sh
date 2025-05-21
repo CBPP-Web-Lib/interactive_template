@@ -1,1 +1,1 @@
-docker exec -u $UID $PROJECTID-watch node $1
+docker exec -u $UID $PROJECTID-watch node --inspect=0.0.0.0:9229 $1
