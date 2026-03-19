@@ -1,4 +1,6 @@
 #For WSL, client host needs to be set to output of ifconfig
 #If it doesn't work, reinstall Docker
 
+#On bare Linux, should be 172.17.0.1
+
 #xdebug.client_host = 172.27.156.207
