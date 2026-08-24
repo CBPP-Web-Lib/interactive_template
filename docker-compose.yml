@@ -1,4 +1,3 @@
-version: '3'
 services:
     apache-dev:
         volumes:
@@ -29,7 +28,13 @@ services:
         build:
             context: .
             dockerfile: services/watch/Dockerfile
-        user: ${UID}:${GID}
+        # Defaults so a forgotten ./install.sh degrades to something workable
+        # instead of resolving to a malformed "1000:" and failing oddly.
+        user: "${HOST_UID:-1000}:${HOST_GID:-1000}"
+        environment:
+            # An unmatched host uid has no /etc/passwd entry, so HOME would be
+            # "/" and npm/webpack cache writes fail with EACCES.
+            - HOME=/tmp
     node-watch:
         volumes:
             - ./node:/opt/project/app:rw
@@ -38,6 +43,8 @@ services:
             context: .
             dockerfile: services/watch/Dockerfile
         container_name: $PROJECTID-watch
-        user: ${UID}:${GID}
+        user: "${HOST_UID:-1000}:${HOST_GID:-1000}"
+        environment:
+            - HOME=/tmp
         ports:
             - "9229:9229"
